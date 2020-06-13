@@ -7,6 +7,7 @@ const companiesRouter = Router();
 companiesRouter.post('/', async (request, response) => {
   const {
     cnpj,
+    company_code,
     state_registration,
     comapany_name,
     fantasy_name,
@@ -25,6 +26,7 @@ companiesRouter.post('/', async (request, response) => {
 
   const company = await createCompany.execute({
     cnpj,
+    company_code,
     state_registration,
     comapany_name,
     fantasy_name,

@@ -5,6 +5,7 @@ import AppError from '../errors/AppError';
 
 interface Request {
   cnpj: number;
+  company_code: number;
   state_registration: string;
   comapany_name: string;
   fantasy_name: string;
@@ -22,6 +23,7 @@ interface Request {
 class CreateCompanyService {
   public async execute({
     cnpj,
+    company_code,
     state_registration,
     comapany_name,
     fantasy_name,
@@ -47,6 +49,7 @@ class CreateCompanyService {
 
     const company = companiesRepository.create({
       cnpj,
+      company_code,
       state_registration,
       comapany_name,
       fantasy_name,

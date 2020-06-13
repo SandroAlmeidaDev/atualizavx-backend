@@ -19,6 +19,10 @@ export default class CreateCompanies1592011732396
             type: 'numeric',
           },
           {
+            name: 'company_code',
+            type: 'numeric',
+          },
+          {
             name: 'state_registration',
             type: 'varchar',
           },

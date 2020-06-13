@@ -7,7 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import Update from './Updates';
+import Update from './Update';
 
 @Entity('companies')
 class Company {
@@ -19,6 +19,9 @@ class Company {
 
   @Column()
   cnpj: number;
+
+  @Column()
+  company_code: number;
 
   @Column()
   state_registration: string;
