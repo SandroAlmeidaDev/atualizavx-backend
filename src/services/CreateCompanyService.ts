@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import User from '../models/Company';
+import Company from '../models/Company';
 
 import AppError from '../errors/AppError';
 
@@ -34,8 +34,8 @@ class CreateCompanyService {
     state,
     commercial_phone,
     cell_phone,
-  }: Request): Promise<User> {
-    const companiesRepository = getRepository(User);
+  }: Request): Promise<Company> {
+    const companiesRepository = getRepository(Company);
 
     const checkCompanyExists = await companiesRepository.findOne({
       where: { cnpj },
