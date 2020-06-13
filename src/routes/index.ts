@@ -3,7 +3,7 @@ import { Router } from 'express';
 import usersRouter from './users.routes';
 import sessionsRouter from './sessions.routes';
 import companiesRouter from './company.routes';
-import updatesRouter from './update.route';
+import updatesRouter from './update.routes';
 
 const routes = Router();
 

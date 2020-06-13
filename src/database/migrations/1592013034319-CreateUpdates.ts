@@ -71,7 +71,7 @@ export default class CreateUpdates1592013034319 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'updates',
       new TableForeignKey({
-        name: 'UpdatesCompanies',
+        name: 'UpdatesCompany',
         columnNames: ['company_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'companies',
