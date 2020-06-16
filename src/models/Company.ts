@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 
 import Update from './Update';
+import VersionFile from './VersionFile';
 
 @Entity('companies')
 class Company {
@@ -16,6 +17,9 @@ class Company {
 
   @OneToMany(() => Update, update => update.company)
   update: Update;
+
+  @OneToMany(() => VersionFile, versionfile => versionfile.company)
+  versionfile: VersionFile;
 
   @Column()
   cnpj: number;

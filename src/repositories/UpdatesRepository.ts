@@ -16,7 +16,11 @@ interface UpdateControl {
 
 @EntityRepository(Update)
 class UpdateRepository extends Repository<Update> {
-  public async getUpdate(): Promise<UpdateControl> {}
+  public async getUpdates(): Promise<UpdateControl> {
+    const updates = await this.find({ where: { review: 217521 } });
+
+    return { update_date };
+  }
 }
 
 export default UpdateRepository;
