@@ -4,12 +4,18 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import VersionFile from './VersionFile';
 
 @Entity('versions')
 class Version {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @OneToMany(() => VersionFile, versionfile => versionfile.version)
+  versionfile: VersionFile;
 
   @Column()
   versao: string;

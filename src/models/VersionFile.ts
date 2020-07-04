@@ -8,43 +8,31 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Company from './Company';
+import Version from './Version';
 
 @Entity('versions_files')
-class Update {
+class VersionFile {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Company, company => company.versionfile, { eager: true })
-  @JoinColumn({ name: 'company_id' })
-  company: Company;
+  @ManyToOne(() => Version, version => version.versionfile, { eager: true })
+  @JoinColumn({ name: 'version_id' })
+  version: Version;
 
   @Column()
-  company_id: string;
+  version_id: string;
 
   @Column()
-  system_name: string;
+  name: string;
 
   @Column()
-  update_date: Date;
+  size: string;
 
   @Column()
-  name_version: string;
+  md5: string;
 
   @Column()
-  compiler: string;
-
-  @Column()
-  operational_system: string;
-
-  @Column()
-  compilation_date: string;
-
-  @Column()
-  review: number;
-
-  @Column()
-  review_index: number;
+  url: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -53,4 +41,4 @@ class Update {
   updated_at: Date;
 }
 
-export default Update;
+export default VersionFile;

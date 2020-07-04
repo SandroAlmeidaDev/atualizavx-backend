@@ -5,12 +5,12 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export default class CreateVersionsFiles1592268268934
+export default class CreateVersionsFilesCompanies1593821375737
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'versions_files',
+        name: 'versions_files_companies',
         columns: [
           {
             name: 'id',
@@ -20,25 +20,45 @@ export default class CreateVersionsFiles1592268268934
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'version_id',
+            name: 'company_id',
             type: 'uuid',
           },
           {
-            name: 'name',
+            name: 'name_file',
             type: 'varchar',
           },
           {
-            name: 'size',
+            name: 'name_version',
             type: 'varchar',
           },
           {
-            name: 'md5',
+            name: 'version_date',
+            type: 'date',
+          },
+          {
+            name: 'compilation_date',
+            type: 'date',
+          },
+          {
+            name: 'review',
+            type: 'numeric',
+          },
+          {
+            name: 'review_index',
+            type: 'numeric',
+          },
+          {
+            name: 'authorized_update',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'status_update',
             type: 'varchar',
           },
           {
-            name: 'url',
+            name: 'id_version_update',
             type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'created_at',
@@ -55,12 +75,12 @@ export default class CreateVersionsFiles1592268268934
     );
 
     await queryRunner.createForeignKey(
-      'versions_files',
+      'versions_files_companies',
       new TableForeignKey({
-        name: 'VersionsFiles',
-        columnNames: ['version_id'],
+        name: 'VersionsFilesCompany',
+        columnNames: ['company_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'versions',
+        referencedTableName: 'companies',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }),
@@ -68,6 +88,6 @@ export default class CreateVersionsFiles1592268268934
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('versions_files');
+    await queryRunner.dropTable('versions_files_companies');
   }
 }

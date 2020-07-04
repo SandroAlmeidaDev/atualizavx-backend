@@ -5,10 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 
 import Update from './Update';
-import VersionFile from './VersionFile';
+import VersionFileCompany from './VersionFileCompany';
 
 @Entity('companies')
 class Company {
@@ -18,8 +19,11 @@ class Company {
   @OneToMany(() => Update, update => update.company)
   update: Update;
 
-  @OneToMany(() => VersionFile, versionfile => versionfile.company)
-  versionfile: VersionFile;
+  @ManyToMany(
+    () => VersionFileCompany,
+    versionfilecompany => versionfilecompany.company,
+  )
+  versionfilecompany: VersionFileCompany;
 
   @Column()
   cnpj: number;
